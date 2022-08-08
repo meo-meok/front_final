@@ -55,7 +55,7 @@ margin-left: 2vw;
 width:5.104vw;
 font-size:18px;
 `;
-// upstream test
+// branch 병합
 const Header = () => {
     return (
         <Head>

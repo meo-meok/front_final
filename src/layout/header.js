@@ -62,7 +62,7 @@ const Header = () => {
             <Logo>MeoMeok</Logo>
             <Search>
                 <Image>
-                    <img src="imgs/search.png" />
+                    <img alt="" src="imgs/search.png" />
                 </Image>
                 <SearchBar type="text" name="search" onChange="" placeholder="지역/ 가게명/ 메뉴 등으로 검색해주세요."/>
             </Search>

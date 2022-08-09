@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Header from "./header";
+import MapArea from "./MapArea";
 import Place_list from "./place_list";
 import Review from "./review";
 
@@ -14,6 +15,7 @@ const Layout = () => {
     return (
         <Container>
             <Header />
+            <MapArea />
             {/* <Review /> */}
         </Container>
     )

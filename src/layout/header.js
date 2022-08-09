@@ -1,5 +1,7 @@
-import React from "react";
+// import React, { useState } from "react";
 import styled from "styled-components";
+// import Place_list from "./place_list";
+// import Review from "./review";
 
 const Head = styled.div`
 width: 100vw;
@@ -46,10 +48,10 @@ background-color:transparent;
   }
 
 `;
-const Line = styled.div`
-font-size: 25px;
-margin:0 0 5px 0;
-`;
+// const Line = styled.div`
+// font-size: 25px;
+// margin:0 0 5px 0;
+// `;
 const LoginBtn = styled.button`
 margin-left: 2vw;
 width:5.104vw;
@@ -57,17 +59,24 @@ font-size:18px;
 `;
 // branch 병합
 const Header = () => {
+    // const [isShown, setIsShown] = useState(false);
+    // const TabClick = event =>{
+    //     setIsShown(true);
+    // }
     return (
         <Head>
             <Logo>MeoMeok</Logo>
             <Search>
                 <Image>
-                    <img alt="" src="imgs/search.png" />
+<<<<<<< HEAD
+                    <img src="imgs/search.png" alt=""/>
+=======
+                    <img src="imgs/search.png" alt=""/>
+>>>>>>> 048f10d6778ca13a4cbe6f4ae5f50bd4a4bd2ad4
                 </Image>
                 <SearchBar type="text" name="search" onChange="" placeholder="지역/ 가게명/ 메뉴 등으로 검색해주세요."/>
             </Search>
             <Tab href="">맛집리스트</Tab>
-            <Line>|</Line>
             <Tab href="">리뷰쓰기</Tab>
             <LoginBtn>로그인</LoginBtn>
         </Head>

@@ -12,6 +12,8 @@ flex-direction:row;
 display:flex;
 text-align:center;
 align-items:center;
+border:1px solid black;
+box-sizing:border-box;
 `;
 const Logo = styled.div`
 width:9.740vw;
@@ -58,11 +60,8 @@ width:5.104vw;
 font-size:18px;
 `;
 // branch 병합
-const Header = () => {
-    // const [isShown, setIsShown] = useState(false);
-    // const TabClick = event =>{
-    //     setIsShown(true);
-    // }
+const Header = ({ReviewClick,PlaceClick}) => {
+    
     return (
         <Head>
             <Logo>MeoMeok</Logo>
@@ -72,8 +71,8 @@ const Header = () => {
                 </Image>
                 <SearchBar type="text" name="search" onChange="" placeholder="지역/ 가게명/ 메뉴 등으로 검색해주세요."/>
             </Search>
-            <Tab href="">맛집리스트</Tab>
-            <Tab href="">리뷰쓰기</Tab>
+            <Tab href="" onClick={ReviewClick}>맛집리스트</Tab>
+            <Tab href="" onClick={PlaceClick}>리뷰쓰기</Tab>
             <LoginBtn>로그인</LoginBtn>
         </Head>
     )

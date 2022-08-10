@@ -10,7 +10,6 @@ function MapArea({ keyword }){
   useEffect(() => {
     if (!map) return
     const ps = new kakao.maps.services.Places()
-    // const txt = '양덕동'
 
     ps.keywordSearch(keyword, (data, status, _pagination) => {
       if (status === kakao.maps.services.Status.OK) {

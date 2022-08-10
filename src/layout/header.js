@@ -68,7 +68,6 @@ const Header = ({setActiveTab, setKeyword}) => {
             setActiveTab(2);
         }
     }
-
     const handleKeywordInput = (event) => {
         setKeywordInput(event.target.value)
     }

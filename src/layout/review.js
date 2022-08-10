@@ -1,80 +1,57 @@
-// import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-// import Place_list from "./place_list";
-// import Review from "./review";
+import SelectBox from "../Components/selectBox";
 
-const Head = styled.div`
-width: 100vw;
-height: 13vh;
-background: #D9D9D9;
-paddings:0px 10px 0px 10px;
-flex-direction:row;
-display:flex;
-text-align:center;
-align-items:center;
+const MainContainer = styled.div`
+`;
+const Container = styled.div`
+width:30vw;
+height:87vh;
+background-color:#ddd;
+float:right;
 border:1px solid black;
 box-sizing:border-box;
 `;
-const Logo = styled.div`
-width:9.740vw;
-`;
-const Search = styled.div`
-width:41.073vw;
-margin-right:24.063vw;
-border-bottom: 1px solid #000;
-flex-direction:row;
+const ListTop = styled.div`
+height:14.9vh;
+border-bottom:1px solid black;
 display:flex;
+justify-content: space-between;
+padding: 0 1.5rem;
 `;
-const Image = styled.div`
-width:4vw;
-height:6vh;
+const ListName = styled.h1`
+margin: auto 0;
 `;
-const SearchBar = styled.input`
-background-color:transparent;
-border: none;
+const NavBtn = styled.button`
+border:none;
+cursor:pointer;
 width:100%;
-height:3.490vh;
-padding:10px 10px;
-font-size:16px;
-`;
-const Tab = styled.button`
-font-size: 20px;
-border: none;
-outline: none;
-cursor: pointer;
-padding: 14px 16px;
-transition: 0.3s;
 background-color:transparent;
+font-size:1rem;
 &:hover{  
     font-weight:bold;
+    background-color:white;
   }
+`;
 
-`;
-// const Line = styled.div`
-// font-size: 25px;
-// margin:0 0 5px 0;
-// `;
-const LoginBtn = styled.button`
-margin-left: 2vw;
-width:5.104vw;
-font-size:18px;
-`;
-// branch 병합
-const Header = ({ReviewClick,PlaceClick}) => {
-    
-    return (
-        <Head>
-            <Logo>MeoMeok</Logo>
-            <Search>
-                <Image>
-                    <img src="imgs/search.png" alt=""/>
-                </Image>
-                <SearchBar type="text" name="search" onChange="" placeholder="지역/ 가게명/ 메뉴 등으로 검색해주세요."/>
-            </Search>
-            <Tab href="" onClick={ReviewClick}>맛집리스트</Tab>
-            <Tab href="" onClick={PlaceClick}>리뷰쓰기</Tab>
-            <LoginBtn>로그인</LoginBtn>
-        </Head>
+function NavButton ({Names}){
+    return(
+        <NavBtn>
+            {Names}
+        </NavBtn>
     )
 }
-export default Header
+
+const Review = () => {
+    return (
+        <MainContainer>
+            <Container>
+                <ListTop>
+                    <ListName>리뷰쓰기</ListName>
+                </ListTop>
+                
+            </Container>
+        </MainContainer>
+    )
+}
+export default Review

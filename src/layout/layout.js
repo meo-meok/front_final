@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Header from "./header";
 import MapArea from "./MapArea";
-import Place_list from "./place_list";
+import PlaceList from "./place_list";
 import Review from "./review";
 
 const Container = styled.div`
@@ -17,24 +17,15 @@ flex-direction:row;
 `;
 
 const Layout = () => {
-    const [isShown, setIsShown] = useState(false);
-    const [isShown2, setIShown2] = useState(false);
-    const ReviewClick = event =>{
-        setIsShown(true);
-        setIShown2(false);
-    }
-    const PlaceClick =event =>{
-        setIShown2(true);
-        setIsShown(false);
-    }
+    const Tabs={0:null,1:<PlaceList />,2:<Review />}
+    const [activeTab,setActiveTab]=useState(0);
+   
     return (
         <Container>
-            <Header ReviewClick={ReviewClick} PlaceClick={PlaceClick} />
+            <Header setActiveTab={setActiveTab} />
             <Body>
                 <MapArea />
-                {isShown && <Place_list />}
-                {isShown2 && <Review />}
-                
+                {Tabs[activeTab]}                
             </Body>
         </Container>
     )

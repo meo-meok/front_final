@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import SelectBox from "../Components/selectBox";
+import ListCard from "../Components/list_card";
 
 const MainContainer = styled.div`
 `;
@@ -39,6 +40,14 @@ font-size:1rem;
     background-color:white;
   }
 `;
+const ScrollArea =styled.div`
+height:63.42vh;
+overflow: auto;
+text-align: justify;
+// ::-webkit-scrollbar {
+//     display:none;
+  }
+`;
 
 function NavButton ({Names}){
     return(
@@ -48,7 +57,7 @@ function NavButton ({Names}){
     )
 }
 
-const Place_list = () => {
+const PlaceList = () => {
     const NAMES = ["한식","중식","양식","일식","디저트"]
     return (
         <MainContainer>
@@ -60,8 +69,19 @@ const Place_list = () => {
                 <CategoryNav>
                     {NAMES.map((name)=><NavButton Names={name}></NavButton>)}
                 </CategoryNav>
+                <ScrollArea>
+                    <ListCard />
+                    <ListCard />
+                    <ListCard />
+                    <ListCard />
+                    <ListCard />
+                    <ListCard />
+                    <ListCard />
+                    <ListCard />
+                    <ListCard />
+                </ScrollArea>
             </Container>
         </MainContainer>
     )
 }
-export default Place_list
+export default PlaceList

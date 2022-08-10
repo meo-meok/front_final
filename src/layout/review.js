@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import SelectBox from "../Components/selectBox";
 
 const MainContainer = styled.div`
 `;
@@ -12,43 +11,41 @@ float:right;
 border:1px solid black;
 box-sizing:border-box;
 `;
-const ListTop = styled.div`
-height:14.9vh;
+const PlaceInfo = styled.div`
+height:34vh;
 border-bottom:1px solid black;
 display:flex;
-justify-content: space-between;
+flex-direction:column;
 padding: 0 1.5rem;
 `;
-const ListName = styled.h1`
-margin: auto 0;
-`;
-const NavBtn = styled.button`
-border:none;
-cursor:pointer;
-width:100%;
-background-color:transparent;
-font-size:1rem;
-&:hover{  
-    font-weight:bold;
-    background-color:white;
-  }
-`;
+const ReviewWrite = styled.div`
+height:52.7vh;
+padding: 0 1.5rem;
 
-function NavButton ({Names}){
-    return(
-        <NavBtn>
-            {Names}
-        </NavBtn>
-    )
-}
+`;
+// const Name = styled.h1`
+// margin: auto 0;
+// `;
+
 
 const Review = () => {
     return (
         <MainContainer>
             <Container>
-                <ListTop>
-                    <ListName>리뷰쓰기</ListName>
-                </ListTop>
+                <PlaceInfo>
+                    {/* <Name>까치식당</Name> */}
+                    {/* <h1>{name}</h1>
+                    <p>🏠 {address}</p>
+                    <p>📢 {notice}</p>
+                    <p>📞 {call}</p> */}
+                    <h1>까치식당</h1>
+                    <p>🏠 경북 포항시 북구 장량로 158번길 5-13</p>
+                    <p>📢 영업 중 15:00 에 브레이크타임</p>
+                    <p>📞 0507-1421-2367</p>
+                </PlaceInfo>
+                <ReviewWrite>
+                  <h1>리뷰쓰기</h1>
+                </ReviewWrite>
                 
             </Container>
         </MainContainer>

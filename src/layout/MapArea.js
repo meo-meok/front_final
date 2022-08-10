@@ -10,7 +10,7 @@ function MapArea(){
   useEffect(() => {
     if (!map) return
     const ps = new kakao.maps.services.Places()
-    const txt = '포항 양덕 맛집'
+    const txt = 'PIZ'
 
     ps.keywordSearch(txt, (data, status, _pagination) => {
       if (status === kakao.maps.services.Status.OK) {

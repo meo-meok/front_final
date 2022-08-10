@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Googlebutton from "../Components/GoogleButton";
 import Header from "./header";
 import MapArea from "./MapArea";
 import PlaceList from "./place_list";

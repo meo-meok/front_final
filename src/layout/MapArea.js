@@ -46,8 +46,8 @@ function MapArea(){
         lng: 126.9786567,
       }}
       style={{
-        width: "100%",
-        height: "800px",
+        width: "100vw",
+        height: "87vh",
       }}
       level={3}
       onCreate={setMap}

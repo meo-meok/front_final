@@ -10,10 +10,12 @@ padding:0;
 display:flex;
 flex-direction:column;
 `;
+
 const Body = styled.div`
 display:flex;
 flex-direction:row;
 `;
+
 const Layout = () => {
     const [isShown, setIsShown] = useState(false);
     const [isShown2, setIShown2] = useState(false);

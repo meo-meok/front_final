@@ -1,33 +1,47 @@
-import React from 'react';
-import GoogleLogin from 'react-google-login';
+import React, { Component } from 'react';
+import { GoogleLogin } from 'react-google-login';
+import styled from 'styled-components';
 
-const clientId = "OAuth Web Client ID";
+const clientId = "677502803040-t5rc7u2fj3nu7dr9euncuf9gf5268ijg.apps.googleusercontent.com"
 
-export default function GoogleButton({ onSocial }){
-    const onSuccess = async(response) => {
-    	console.log(response);
-    
-        const { googleId, profileObj : { email, name } } = response;
-        
-        await onSocial({
-            socialId : googleId,
-            socialType : 'google',
-            email,
-            nickname : name
-        });
+class Googlebutton extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            id: '',
+            name: '',
+            provider: '',
+        }
+    }
+    // Google Login
+    responseGoogle = (res) => {
+        console.log(res)
     }
 
-    const onFailure = (error) => {
-        console.log(error);
+    // Login Fail
+    responseFail = (err) => {
+        console.error(err);
     }
 
-    return(
-        <div>
-            <GoogleLogin
-                clientId={clientId}
-                responseType={"id_token"}
-                onSuccess={onSuccess}
-                onFailure={onFailure}/>
-        </div>
-    )
+    render() {
+        return (
+            <Container>
+                <GoogleLogin
+                    clientId={clientId}
+                    buttonText="Google"
+                    onSuccess={this.responseGoogle}
+                    onFailure={this.responseFail}
+                />
+            </Container>
+        );
+    }
 }
+
+const Container = styled.div`
+    display: flex;
+    flex-flow: column wrap;
+`
+
+
+export default Googlebutton;

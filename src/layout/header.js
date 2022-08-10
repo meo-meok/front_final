@@ -2,6 +2,7 @@
 import styled from "styled-components";
 // import Place_list from "./place_list";
 // import Review from "./review";
+import Googlebutton from "../Components/GoogleButton";
 
 const Head = styled.div`
 width: 100vw;
@@ -74,8 +75,8 @@ const Header = ({ReviewClick,PlaceClick}) => {
             </Search>
             <Tab href="" onClick={ReviewClick}>맛집리스트</Tab>
             <Tab href="" onClick={PlaceClick}>리뷰쓰기</Tab>
-
-            <LoginBtn>로그인</LoginBtn>
+             <Googlebutton/>
+            {/* <LoginBtn>로그인</LoginBtn> */}
         </Head>
     )
 }

@@ -29,7 +29,7 @@ class Googlebutton extends Component {
             <Container>
                 <GoogleLogin
                     clientId={clientId}
-                    buttonText="Google"
+                    buttonText="로그인"
                     onSuccess={this.responseGoogle}
                     onFailure={this.responseFail}
                 />
@@ -39,7 +39,7 @@ class Googlebutton extends Component {
 }
 
 const Container = styled.div`
-    display: flex;
+    display: flex-wrap;
     flex-flow: column wrap;
 `
 

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import Googlebutton from "../Components/GoogleButton";
 import Header from "./header";
 import MapArea from "./MapArea";
-import Place_list from "./place_list";
+import PlaceList from "./place_list";
 import Review from "./review";
 
 const Container = styled.div`
@@ -17,24 +18,16 @@ flex-direction:row;
 `;
 
 const Layout = () => {
-    const [isShown, setIsShown] = useState(false);
-    const [isShown2, setIShown2] = useState(false);
-    const ReviewClick = event =>{
-        setIsShown(true);
-        setIShown2(false);
-    }
-    const PlaceClick =event =>{
-        setIShown2(true);
-        setIsShown(false);
-    }
+    const Tabs={0:null,1:<PlaceList />,2:<Review />}
+    const [activeTab,setActiveTab]=useState(0);
+    const [keyword, setKeyword] = useState('포항 양덕동 맛집')
+
     return (
         <Container>
-            <Header ReviewClick={ReviewClick} PlaceClick={PlaceClick} />
+            <Header setActiveTab={setActiveTab} setKeyword={setKeyword}/>
             <Body>
-                <MapArea />
-                {isShown && <Place_list />}
-                {isShown2 && <Review />}
-                
+                <MapArea keyword={keyword}/>
+                {Tabs[activeTab]}                
             </Body>
         </Container>
     )

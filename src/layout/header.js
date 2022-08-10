@@ -1,4 +1,4 @@
-// import React, { useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 // import Place_list from "./place_list";
 // import Review from "./review";
@@ -58,7 +58,8 @@ width:5.104vw;
 font-size:18px;
 `;
 
-const Header = ({setActiveTab}) => {
+const Header = ({setActiveTab, setKeyword}) => {
+    const [keywordInput, setKeywordInput] = useState('')
     const onClick = (event) => {
         if (event.target.name === "list"){
             setActiveTab(1);
@@ -67,15 +68,24 @@ const Header = ({setActiveTab}) => {
             setActiveTab(2);
         }
     }
+    const handleKeywordInput = (event) => {
+        setKeywordInput(event.target.value)
+    }
+    const handleKeywordSubmit = (event) => {
+        setKeyword(keywordInput)
+        //setKeyword(event.target.value)
+
+    }
     return (
         <Head>
             <Logo>MeoMeok</Logo>
             <Search>
                 <Image>
-
-                    <img src="imgs/search.png" alt=""/>
+                    <button onClick={handleKeywordSubmit}>
+                        <img src="imgs/search.png" alt=""/>
+                    </button>
                 </Image>
-                <SearchBar type="text" name="search" onChange="" placeholder="지역/ 가게명/ 메뉴 등으로 검색해주세요."/>
+                <SearchBar type="text" name="search" onChange={handleKeywordInput} placeholder="지역/ 가게명/ 메뉴 등으로 검색해주세요."/>
             </Search>
             <Tab name="list" onClick={onClick}>맛집리스트</Tab>
             <Tab name="review" onClick={onClick}>리뷰쓰기</Tab>

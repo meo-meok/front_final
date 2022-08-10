@@ -1,7 +1,7 @@
-// import React, { useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-// import Place_list from "./place_list";
-// import Review from "./review";
+import Place_list from "./place_list";
+import Review from "./review";
 
 const Head = styled.div`
 width: 100vw;
@@ -74,7 +74,6 @@ const Header = () => {
                 <SearchBar type="text" name="search" onChange="" placeholder="지역/ 가게명/ 메뉴 등으로 검색해주세요."/>
             </Search>
             <Tab href="">맛집리스트</Tab>
-            <Line>|</Line>
             <Tab href="">리뷰   쓰기</Tab>
             <LoginBtn>로그인</LoginBtn>
         </Head>

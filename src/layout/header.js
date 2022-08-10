@@ -52,11 +52,6 @@ background-color:transparent;
   }
 
 `;
-const LoginBtn = styled.button`
-margin-left: 2vw;
-width:5.104vw;
-font-size:18px;
-`;
 
 const Header = ({setActiveTab}) => {
     const onClick = (event) => {

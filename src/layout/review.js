@@ -19,7 +19,7 @@ flex-direction:column;
 padding: 0 1.5rem;
 `;
 const ReviewWrite = styled.div`
-height:52.7vh;
+height:50vh;
 padding: 0 1.5rem;
 
 `;

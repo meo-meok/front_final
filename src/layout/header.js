@@ -19,25 +19,36 @@ const Logo = styled.div`
 width:9.740vw;
 `;
 const Search = styled.div`
-width:41.073vw;
-margin-right:24.063vw;
-border-bottom: 1px solid #000;
+width:30vw;
+margin-right:35vw;
+border: 1px solid #000;
+border-radius:4px;
 flex-direction:row;
 display:flex;
 `;
 const ImageContainer = styled.div`
 width:4vw;
-height:6vh;
+margin:auto 0;
 `;
-const Image = styled.img`
+const SearchBtn = styled.button`
+background-color:transparent;
+border:none;
+cursor:pointer;
+&:focus{
+    outline:none;
+}
 `;
 const SearchBar = styled.input`
 background-color:transparent;
-border: none;
+border:none;
+border-right: 1px solid #000;
 width:100%;
 height:3.490vh;
 padding:10px 10px;
 font-size:16px;
+&:focus{
+    outline:none;
+}
 `;
 const Tab = styled.button`
 font-size: 20px;
@@ -82,9 +93,9 @@ const Header = ({setActiveTab, setKeyword}) => {
             <Search>
                 <SearchBar type="text" name="search" onChange={handleKeywordInput} onKeyPress={handleOnkeyPress} placeholder="지역/ 가게명/ 메뉴 등으로 검색해주세요."/>
                 <ImageContainer>
-                    <button onClick={handleKeywordSubmit}>
-                        <Image src="imgs/search.png" alt=""/>
-                    </button>
+                    <SearchBtn onClick={handleKeywordSubmit}>
+                        <img src="imgs/search.png" alt=""/>
+                    </SearchBtn>
                 </ImageContainer>
             </Search>
             <Tab name="list" onClick={onClick}>맛집리스트</Tab>

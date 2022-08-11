@@ -17,8 +17,8 @@ flex-direction:row;
 `;
 
 const Layout = () => {
-    const Tabs={0:null,1:<PlaceList />,2:<Review />}
-    const [activeTab,setActiveTab]=useState(0);
+    const Tabs={1:<PlaceList />,2:<Review />}
+    const [activeTab,setActiveTab]=useState(1);
     const [keyword, setKeyword] = useState('포항 양덕동 맛집')
 
     return (

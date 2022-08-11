@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import ReviewForm from "../Components/reviewFrom";
 const MainContainer = styled.div`
@@ -29,6 +29,9 @@ padding: 0 1.5rem;
 
 
 const Review = () => {
+    // const ReviewTabs = {0:null,1:<ReviewForm />}
+    const [activeReview,setActiveReview]=useState(true);
+    const [reviewcontent,setReviewContent]= useState("");
     return (
         <MainContainer>
             <Container>
@@ -45,9 +48,9 @@ const Review = () => {
                 </PlaceInfo>
                 <ReviewWrite>
                   <h1>리뷰쓰기</h1>
-                  <ReviewForm />
+                  {activeReview && <ReviewForm setActiveReview={setActiveReview} setReviewContent={setReviewContent}/>}
+                  {reviewcontent}
                 </ReviewWrite>
-                
             </Container>
         </MainContainer>
     )

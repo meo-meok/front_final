@@ -30,7 +30,21 @@ font-size:12px;
 const TextLimit = styled.p`
 font-size:12px;
 `;
-const ReviewForm = () =>{
+const SubmitContainer = styled.div`
+margin-top:1rem;
+text-align:center;
+`;
+const SubmitBtn = styled.button`
+padding:0.5rem 1rem;
+border-radius:5px;
+border:1px solid black;
+background-color:#fff;
+cursor:pointer;
+&:hover{
+    background-color:#ddd;
+}
+`;
+const ReviewForm = ({setActiveReview,setReviewContent}) =>{
     const [textArea,setTextArea] =useState("");
     const handleChange = (event)=>{
         if(textArea.length<100){
@@ -39,6 +53,10 @@ const ReviewForm = () =>{
             event.target.value=textArea.substring(0,99);
             setTextArea(event.target.value);
         }
+    }
+    const SubmitClick = () =>{
+        setReviewContent(textArea);
+        setActiveReview(false);
     }
     return(
         <div>
@@ -49,7 +67,9 @@ const ReviewForm = () =>{
             <Form>
                 <TextArea value={textArea} onChange={handleChange} placeholder="100자 이내로 리뷰를 작성해주세요."/>
             </Form>
-            
+            <SubmitContainer>
+                <SubmitBtn onClick={SubmitClick}>등록</SubmitBtn>
+            </SubmitContainer>
         </div>
         
     );

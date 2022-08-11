@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-// import Place_list from "./place_list";
-// import Review from "./review";
 
 import Googlebutton from "../Components/GoogleButton";
 
@@ -27,9 +25,11 @@ border-bottom: 1px solid #000;
 flex-direction:row;
 display:flex;
 `;
-const Image = styled.div`
+const ImageContainer = styled.div`
 width:4vw;
 height:6vh;
+`;
+const Image = styled.img`
 `;
 const SearchBar = styled.input`
 background-color:transparent;
@@ -63,6 +63,11 @@ const Header = ({setActiveTab, setKeyword}) => {
             setActiveTab(2);
         }
     }
+    const handleOnkeyPress = (event) => {
+        if (event.key === 'Enter'){
+            setKeyword(keywordInput);
+        }
+    }
     const handleKeywordInput = (event) => {
         setKeywordInput(event.target.value)
     }
@@ -75,12 +80,12 @@ const Header = ({setActiveTab, setKeyword}) => {
         <Head>
             <Logo>MeoMeok</Logo>
             <Search>
-                <Image>
+                <SearchBar type="text" name="search" onChange={handleKeywordInput} onKeyPress={handleOnkeyPress} placeholder="지역/ 가게명/ 메뉴 등으로 검색해주세요."/>
+                <ImageContainer>
                     <button onClick={handleKeywordSubmit}>
-                        <img src="imgs/search.png" alt=""/>
+                        <Image src="imgs/search.png" alt=""/>
                     </button>
-                </Image>
-                <SearchBar type="text" name="search" onChange={handleKeywordInput} placeholder="지역/ 가게명/ 메뉴 등으로 검색해주세요."/>
+                </ImageContainer>
             </Search>
             <Tab name="list" onClick={onClick}>맛집리스트</Tab>
             <Tab name="review" onClick={onClick}>리뷰쓰기</Tab>

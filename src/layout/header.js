@@ -86,7 +86,7 @@ const Header = ({setActiveTab, setKeyword}) => {
     }
     const handleKeywordSubmit = (event) => {
         setKeyword(keywordInput)
-        //setKeyword(event.target.value)
+        setActiveTab(3);
 
     }
     return (

@@ -4,6 +4,7 @@ import Header from "./header";
 import MapArea from "./MapArea";
 import PlaceList from "./place_list";
 import Review from "./review";
+import SearchList from "./search_list";
 
 const Container = styled.div`
 padding:0;
@@ -26,7 +27,7 @@ const Layout = () => {
             <Header setActiveTab={setActiveTab} setKeyword={setKeyword}/>
             <Body>
                 <MapArea keyword={keyword}/>
-                {Tabs[activeTab]}                
+                {activeTab===3 ?<SearchList keyword={keyword}/>:Tabs[activeTab]}
             </Body>
         </Container>
     )

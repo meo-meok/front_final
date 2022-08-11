@@ -79,6 +79,7 @@ const Header = ({setActiveTab, setKeyword}) => {
     const handleOnkeyPress = (event) => {
         if (event.key === 'Enter'){
             setKeyword(keywordInput);
+            setActiveTab(3);
         }
     }
     const handleKeywordInput = (event) => {

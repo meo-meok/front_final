@@ -47,7 +47,7 @@ function MapArea({ keyword }){
         lng: 126.9786567,
       }}
       style={{
-        width: "100vw",
+        width: "70vw",
         height: "87vh",
       }}
       level={3}

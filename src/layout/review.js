@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ReviewForm from "../Components/reviewFrom";
+
 const MainContainer = styled.div`
 `;
 const Container = styled.div`
@@ -46,6 +47,7 @@ const Review = () => {
                 <ReviewWrite>
                   <h1>리뷰쓰기</h1>
                   <ReviewForm />
+                  <h1>별점쓰기</h1>
                 </ReviewWrite>
                 
             </Container>

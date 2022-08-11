@@ -63,7 +63,7 @@ const PlaceList = () => {
         <MainContainer>
             <Container>
                 <ListTop>
-                    <ListName>맛집리스트</ListName>
+                    <ListName>내 주변 맛집</ListName>
                     <SelectBox />
                 </ListTop>
                 <CategoryNav>

@@ -61,7 +61,9 @@ background-color:transparent;
 &:hover{  
     font-weight:bold;
   }
-
+&:focus{
+    font-weight:bold;
+}
 `;
 
 const Header = ({setActiveTab, setKeyword}) => {

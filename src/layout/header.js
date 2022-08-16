@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
 import Googlebutton from "../Components/GoogleButton";
+import Data from "./data";
 
 const Head = styled.div`
 width: 100vw;

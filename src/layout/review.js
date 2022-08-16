@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ReviewForm from "../Components/reviewFrom";
+import StarRating from "../Components/StarRating";
 
 const MainContainer = styled.div`
 `;
@@ -48,6 +49,7 @@ const Review = () => {
                   <h1>리뷰쓰기</h1>
                   <ReviewForm />
                   <h1>별점쓰기</h1>
+                  <StarRating />
                 </ReviewWrite>
                 
             </Container>

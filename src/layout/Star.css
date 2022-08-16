@@ -3,10 +3,10 @@ button {
     border: none;
     outline: none;
     cursor: pointer;
-    font-size: 2rem;
+    font-size: 3rem;
   }
   .on {
-    color: yellow;
+    color: palevioletred;
   }
   .off {
     color: #ccc;

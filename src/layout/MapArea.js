@@ -2,7 +2,7 @@
 import { useState, useEffect} from "react";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 
-function MapArea({ keyword }){
+function MapArea({ keyword, setActiveTab }){
   const [info, setInfo] = useState()
   const [markers, setMarkers] = useState([])
   const [map, setMap] = useState()
@@ -57,10 +57,13 @@ function MapArea({ keyword }){
         <MapMarker
           key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
           position={marker.position}
-          onClick={() => setInfo(marker)}
+          onClick={() => {
+            setInfo(marker)
+            setActiveTab(2)
+          }}
         >
           {info &&info.content === marker.content && (
-            <div style={{color:"#000"}}>{marker.content}</div>
+            <div style={{color:"black", background:"white"}}>{marker.content}</div>
           )}
         </MapMarker>
       ))}

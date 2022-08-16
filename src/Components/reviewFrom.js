@@ -2,9 +2,13 @@ import React,{useState} from "react";
 import styled from "styled-components";
 //import { ReactDOM } from "react-dom/client";
 
+const Container = styled.div`
+height:25vh;
+`;
+
 const Form = styled.form`
 width:100%;
-height:25vh;
+height:80%;
 border:1px solid black;
 `;
 const TextArea = styled.textarea`
@@ -17,6 +21,9 @@ box-sizing:border-box;
 &:focus{
     outline:none;
 }
+@media screen and (max-width: 1400px) {
+    font-size:12px;
+    }
 `;
 const ReviewInfo = styled.div`
 justify-content:space-between;
@@ -35,7 +42,7 @@ margin-top:1rem;
 text-align:center;
 `;
 const SubmitBtn = styled.button`
-padding:0.5rem 1rem;
+font-size:16px;
 border-radius:5px;
 border:1px solid black;
 background-color:#fff;
@@ -43,6 +50,9 @@ cursor:pointer;
 &:hover{
     background-color:#ddd;
 }
+@media screen and (max-width: 1400px) {
+    font-size:14px;
+    }
 `;
 const ReviewForm = ({setActiveReview,setReviewContent}) =>{
     const [textArea,setTextArea] =useState("");
@@ -59,7 +69,7 @@ const ReviewForm = ({setActiveReview,setReviewContent}) =>{
         setActiveReview(false);
     }
     return(
-        <div>
+        <Container>
             <ReviewInfo>
                 <UserInfo><p>👩 User12354865</p></UserInfo>
                 <TextLimit>{textArea.length}/100</TextLimit>
@@ -70,7 +80,7 @@ const ReviewForm = ({setActiveReview,setReviewContent}) =>{
             <SubmitContainer>
                 <SubmitBtn onClick={SubmitClick}>등록</SubmitBtn>
             </SubmitContainer>
-        </div>
+        </Container>
         
     );
 };

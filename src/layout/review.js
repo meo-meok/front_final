@@ -24,6 +24,17 @@ height:50vh;
 padding: 0 1.5rem;
 
 `;
+const Name = styled.h1`
+margin-bottom:0rem;
+@media screen and (max-width: 1400px) {
+    font-size:26px;
+    }
+`;
+const Info = styled.p`
+@media screen and (max-width: 1400px) {
+    font-size:14px;
+    }
+`;
 // const Name = styled.h1`
 // margin: auto 0;
 // `;
@@ -42,13 +53,13 @@ const Review = () => {
                     <p>🏠 {address}</p>
                     <p>📢 {notice}</p>
                     <p>📞 {call}</p> */}
-                    <h1>까치식당</h1>
-                    <p>🏠 경북 포항시 북구 장량로 158번길 5-13</p>
-                    <p>📢 영업 중 15:00 에 브레이크타임</p>
-                    <p>📞 0507-1421-2367</p>
+                    <Name>까치식당</Name>
+                    <Info>🏠 경북 포항시 북구 장량로 158번길 5-13</Info>
+                    <Info>📢 영업 중 15:00 에 브레이크타임</Info>
+                    <Info>📞 0507-1421-2367</Info>
                 </PlaceInfo>
                 <ReviewWrite>
-                  <h1>리뷰쓰기</h1>
+                  <Name>리뷰쓰기</Name>
                   <StarTating />
                   {activeReview && <ReviewForm setActiveReview={setActiveReview} setReviewContent={setReviewContent}/>}
                   {reviewcontent}

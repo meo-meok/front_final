@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Data from "../layout/data";
 
 const Card = styled.div`
 height:18.7vh;
@@ -13,7 +14,10 @@ font-weight:bold;
 
 function ListCard({keyword}){
     return(
-        <Card>{keyword}</Card>
+        <div>
+            <Card>{keyword}</Card>
+            <Data keyword={keyword}/>
+        </div>
     )
 }
 export default ListCard;

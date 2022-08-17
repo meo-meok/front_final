@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Googlebutton from "../Components/GoogleButton";
-import Data from "./data";
 
 const Head = styled.div`
 width: 100vw;
@@ -99,7 +98,8 @@ const Header = ({setActiveTab, setKeyword}) => {
     const handleKeywordInput = (event) => {
         setKeywordInput(event.target.value)
     }
-    const handleKeywordSubmit = (event) => {
+    const handleKeywordSubmit = (event) => {  
+        event.preventDefault(); 
         setKeyword(keywordInput)
         setActiveTab(3);
 

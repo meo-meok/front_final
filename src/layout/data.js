@@ -1,30 +1,28 @@
-import React, { useState, useEffect } from "react";
-
-
+import { useState, useEffect } from "react";
 
 function Data({keyword}) {
-    let [data, setData] = useState(null)
-    const [name, setName] = useState(null); 
-    const [res,setRes]=useState(null);
+    let [data, setData] = useState("데이타")
+    const [name, setName] = useState("이름"); 
+    const [res,setRes] = useState("레스");
   
     useEffect(() => {
       fetch('http://127.0.0.1:8000/meomeok/restaurants/')
-      .then(result=>result.json())
-      .then(result=>{
-        setData(result)
+      .then(results=>results.json())
+      .then(results=>{
+        setData(results)
         setName(keyword)
-        setRes(
-          data.find(e => {
-            return e.restaurant_name === name;
+        results.map((result)=>{
+          if(result.restaurant_name === keyword) {
+            setRes(result);}
           })
-        )
+
       });
-  },[keyword]);
+  }, [keyword]);
   
     return (
-        console.log(res)
-    )
-  }
+    <div>{res.restaurant_name}
+    </div>)
+}
 
 
 export default Data

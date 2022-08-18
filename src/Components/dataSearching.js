@@ -25,17 +25,13 @@ function ShowList(props){
       <Name>{datalist.restaurant_name}</Name>
       <Info>{datalist.address}</Info>
       <Info>{datalist.number}</Info>
-      {/* <Info>{datalist.category}</Info> */}
     </PlaceInfo>
   )
   return(
     <div>{list}</div>
   )
 }
-function Data({keyword}) {
-    const [data, setData] = useState("데이타")
-    const [name, setName] = useState("이름"); 
-    const [res,setRes] = useState("레스");
+function DataSearching({keyword}) {
     const [searchDataList,setSearchDataList]=useState('');
     var searchData = [];
   
@@ -43,49 +39,32 @@ function Data({keyword}) {
       fetch('http://127.0.0.1:8000/meomeok/restaurants/')
       .then(results=>results.json())
       .then(results=>{
-        setData(results)
-        setName(keyword)
-        let i=0;
         results.map((result)=>{
+          // 검색내용과 일치하는 배열 찾기
           let str = result.restaurant_name.replaceAll(/ /gi, "");
           if(str.indexOf(keyword.replaceAll(/ /gi, ""))!==-1) {
-            setRes(result);
             searchData.push(result);
           }
         })
+        // 데이터리스트 중복 제거
         {
           searchData=searchData.filter((arr,index,callback)=>
             index=== callback.findIndex((d)=>d.restaurant_id === arr.restaurant_id))
             
         }
         setSearchDataList(searchData)
-        // console.log(res)
       });
   }, [keyword]);
   
     return (
-      
-    <div>
-      {searchDataList.length===0
-      ? <PlaceInfo>
-          <Name>{res.restaurant_name}</Name>
-          <Info>{res.address}</Info>
-          <Info>{res.number}</Info>
-          <Info>{res.category}</Info>
-        </PlaceInfo>
-      : <ShowList searchDataList={searchDataList}/>
-      }
-      {/* {console.log(searchDataList)} */}
-      {/* <ShowList searchDataList={searchDataList}/>
-      <PlaceInfo>
-        <Name>{res.restaurant_name}</Name>
-        <Info>{res.address}</Info>
-        <Info>{res.number}</Info>
-        <Info>{res.category}</Info>
-      </PlaceInfo> */}
-    </div>
+      <div>
+        {searchDataList.length===0
+        ? null
+        : <ShowList searchDataList={searchDataList}/>
+        }
+      </div>
     )
 }
 
 
-export default Data
+export default DataSearching

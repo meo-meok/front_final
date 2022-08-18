@@ -1,7 +1,6 @@
-import React,{useState} from "react";
+import React from "react";
 import styled from "styled-components";
-import ListCard from "../Components/list_card";
-import Data from "../layout/data";
+import DataSearching from "../Components/dataSearching";
 const MainContainer = styled.div`
 `;
 const Container = styled.div`
@@ -24,9 +23,8 @@ const SearchList = ({keyword}) => {
     return(
         <MainContainer>
             <Container>
-                {/* <h1>{keyword}</h1> */}
                 <ScrollArea>
-                <Data keyword={keyword}/>
+                <DataSearching keyword={keyword}/>
                 </ScrollArea>
             </Container>
         </MainContainer>

@@ -76,15 +76,6 @@ const PlaceList = () => {
                     {NAMES.map((name)=><NavButton Names={name}></NavButton>)}
                 </CategoryNav>
                 <ScrollArea>
-                    <ListCard />
-                    <ListCard />
-                    <ListCard />
-                    <ListCard />
-                    <ListCard />
-                    <ListCard />
-                    <ListCard />
-                    <ListCard />
-                    <ListCard />
                 </ScrollArea>
             </Container>
         </MainContainer>

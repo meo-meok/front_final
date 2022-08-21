@@ -1,14 +1,20 @@
+/*global kakao */
+
 import { useState, useEffect} from "react";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 
 function CategoryMap ({categoryId, setActiveTab}){ 
-    // const [searchDataList,setSearchDataList]=useState('');
     const [markers, setMarkers] = useState([])
     const [info, setInfo] = useState()
+    const [map, setMap] = useState()
 
     var searchData = [];
   
+    const bounding = new kakao.maps.LatLngBounds()
+
     useEffect(() => {
+      if (!map) return
+
       fetch('http://127.0.0.1:8000/meomeok/restaurants/')
       .then(results=>results.json())
       .then(results=>{
@@ -33,7 +39,11 @@ function CategoryMap ({categoryId, setActiveTab}){
                   },
                 content : searchData[i].restaurant_name,
             })
+            bounding.extend(
+                new kakao.maps.LatLng(searchData[i].latitude, searchData[i].longitude)
+            )
         }
+        map.setBounds(bounding)
         setMarkers(markers)
       });
     }, [categoryId]);
@@ -49,7 +59,8 @@ function CategoryMap ({categoryId, setActiveTab}){
             width: "70vw",
             height: "87vh",
         }}
-        level={4} // 지도의 확대 레벨
+        level={3} // 지도의 확대 레벨
+        onCreate={setMap}
       >
         {markers.map((marker) => (
           <MapMarker

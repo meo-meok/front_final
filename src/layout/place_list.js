@@ -66,9 +66,11 @@ function NavButton ({Names,setCategoryId}){
     )
 }
 
-const PlaceList = () => {
+const PlaceList = ({setCateId}) => {
     const NAMES = {1:"한식/분식",2:"돈까스/회/일식",3:"중식",4:"양식",5:"아시안"}
     const [categoryId,setCategoryId]=useState(1);
+    setCateId(categoryId)
+    
     return (
         <MainContainer>
             <Container>
@@ -77,7 +79,7 @@ const PlaceList = () => {
                     <SelectBox />
                 </ListTop>
                 <CategoryNav>
-                    {Object.entries(NAMES).map((e,idx)=><NavButton Names={e} setCategoryId={setCategoryId}></NavButton>)}
+                    {Object.entries(NAMES).map((e)=><NavButton Names={e} setCategoryId={setCategoryId}></NavButton>)}
                 </CategoryNav>
                 <ScrollArea>
                     <DataCategory categoryId={categoryId}/>

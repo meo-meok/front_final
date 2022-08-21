@@ -2,7 +2,7 @@
 import { useState, useEffect} from "react";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 
-function MapArea({ keyword, setActiveTab }){
+function MapArea({ keyword, category, setActiveTab }){
   const [info, setInfo] = useState()
   const [markers, setMarkers] = useState([])
   const [map, setMap] = useState()
@@ -10,7 +10,6 @@ function MapArea({ keyword, setActiveTab }){
   useEffect(() => {
     if (!map) return
     const ps = new kakao.maps.services.Places()
-
 
     ps.keywordSearch(keyword, (data, status, _pagination) => {
       if (status === kakao.maps.services.Status.OK) {

@@ -36,10 +36,12 @@ function ShowList(props){
     <div>{list}</div>
   )
 }
-function DataSearching({keyword}) {
+function DataSearching({keyword, DataReturn}) {
     const [searchDataList,setSearchDataList]=useState('');
     var searchData = [];
   
+    DataReturn(searchDataList);
+
     useEffect(() => {
       fetch('http://127.0.0.1:8000/meomeok/restaurants/')
       .then(results=>results.json())

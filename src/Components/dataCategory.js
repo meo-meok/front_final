@@ -61,7 +61,6 @@ function DataCategory({categoryId}) {
   
     return (
       <div>
-        
         {searchDataList &&<ShowList searchDataList={searchDataList}/>}
       </div>
     )

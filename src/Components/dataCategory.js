@@ -10,7 +10,7 @@ flex-direction:column;
 const PlaceInfo = styled.div`
 padding: 0 1.5rem;
 `;
-const SelectPlace = styled.button`
+const SelectPlace = styled.a`
 cursor:pointer;
 text-align:left;
 &:hover{  

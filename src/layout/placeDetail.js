@@ -54,6 +54,9 @@ const PlaceDetail = ({PlaceDetailInfo,setIsShowPlaceDetail}) => {
                 <Info>📢 영업 중 15:00 에 브레이크타임</Info>
                 <Info>📞 {PlaceDetailInfo['number']}</Info>
             </PlaceInfo>
+            <ReviewWrite>
+                리뷰리뷰리뷰
+            </ReviewWrite>
         </Container>
     )
 }

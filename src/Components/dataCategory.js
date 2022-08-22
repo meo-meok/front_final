@@ -10,8 +10,9 @@ flex-direction:column;
 const PlaceInfo = styled.div`
 padding: 0 1.5rem;
 `;
-const SelectPlace = styled.a`
+const SelectPlace = styled.button`
 cursor:pointer;
+text-align:left;
 &:hover{  
   background-color:white;
 }
@@ -28,14 +29,17 @@ const Info = styled.p`
     font-size:14px;
     }
 `;
-const ShowList=({searchDataList,setIsShowPlaceDetail})=>{
-  const handlePlaceDetailView = ()=>{
-    return setIsShowPlaceDetail(true)
+const ShowList=({searchDataList,setIsShowPlaceDetail,setPlaceDetailInfo})=>{
+  const handlePlaceDetailView = (index)=>{
+    return (
+      setIsShowPlaceDetail(true),
+      setPlaceDetailInfo(searchDataList[index])
+    )
   }
-  const list = searchDataList.map((datalist)=>
+  const list = searchDataList.map((datalist,index)=>
     <Container>
-      <SelectPlace onClick={handlePlaceDetailView}>
-        <PlaceInfo key={datalist.id}>
+      <SelectPlace key={datalist.id} onClick={()=>{handlePlaceDetailView(index);}}>
+        <PlaceInfo>
           <Name>{datalist.restaurant_name}</Name>
           <Info>{datalist.address}</Info>
           <Info>{datalist.number}</Info>
@@ -48,7 +52,7 @@ const ShowList=({searchDataList,setIsShowPlaceDetail})=>{
     <div>{list}</div>
   )
 }
-function DataCategory({categoryId,setIsShowPlaceDetail}) {
+function DataCategory({categoryId,setIsShowPlaceDetail,setPlaceDetailInfo}) {
     const [searchDataList,setSearchDataList]=useState('');
     var searchData = [];
   
@@ -73,7 +77,7 @@ function DataCategory({categoryId,setIsShowPlaceDetail}) {
   
     return (
       <div>
-        {searchDataList &&<ShowList searchDataList={searchDataList} setIsShowPlaceDetail={setIsShowPlaceDetail}/>}
+        {searchDataList &&<ShowList searchDataList={searchDataList} setIsShowPlaceDetail={setIsShowPlaceDetail} setPlaceDetailInfo={setPlaceDetailInfo}/>}
       </div>
     )
 }

@@ -39,7 +39,7 @@ const Info = styled.p`
     }
 `;
 
-const PlaceDetail = ({setIsShowPlaceDetail}) => {
+const PlaceDetail = ({PlaceDetailInfo,setIsShowPlaceDetail}) => {
     const [activeReview,setActiveReview]=useState(true);
     const [reviewcontent,setReviewContent]= useState("");
     const handlePlaceDetailView = ()=>{
@@ -49,22 +49,11 @@ const PlaceDetail = ({setIsShowPlaceDetail}) => {
         <Container>
             <PlaceInfo>
                 <CloseButton onClick={handlePlaceDetailView}>x</CloseButton>
-                {/* <Name>까치식당</Name> */}
-                {/* <h1>{name}</h1>
-                <p>🏠 {address}</p>
-                <p>📢 {notice}</p>
-                <p>📞 {call}</p> */}
-                <Name>까치식당</Name>
-                <Info>🏠 경북 포항시 북구 장량로 158번길 5-13</Info>
+                <Name>{PlaceDetailInfo['restaurant_name']}</Name>
+                <Info>🏠 {PlaceDetailInfo['address']}</Info>
                 <Info>📢 영업 중 15:00 에 브레이크타임</Info>
-                <Info>📞 0507-1421-2367</Info>
+                <Info>📞 {PlaceDetailInfo['number']}</Info>
             </PlaceInfo>
-            <ReviewWrite>
-                <Name>리뷰쓰기</Name>
-                <StarTating />
-                {activeReview && <ReviewForm setActiveReview={setActiveReview} setReviewContent={setReviewContent}/>}
-                {reviewcontent}
-            </ReviewWrite>
         </Container>
     )
 }

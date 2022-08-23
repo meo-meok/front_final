@@ -39,11 +39,14 @@ const Info = styled.p`
     }
 `;
 
-const PlaceDetail = ({PlaceDetailInfo,setIsShowPlaceDetail}) => {
+const PlaceDetail = ({PlaceDetailInfo,setIsShowPlaceDetail,setActiveTab}) => {
     const [activeReview,setActiveReview]=useState(true);
     const [reviewcontent,setReviewContent]= useState("");
     const handlePlaceDetailView = ()=>{
-        return setIsShowPlaceDetail(false)
+        return (
+            setIsShowPlaceDetail(false),
+            setActiveTab(1)
+        )
       }
     return (
         <Container>

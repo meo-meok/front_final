@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "../layout/Star.css"
+import "../layout/Star.css";
+import styled from "styled-components";
 
 // const param = {
 //   method: 'POST',
@@ -13,7 +14,14 @@ import "../layout/Star.css"
 // fetch('http://localhost:3333/topics/', param) 
 // .then(type=>type.json())
 // .then(result=>{});
-
+const StarButton = styled.button`
+background-color: transparent;
+border: none;
+outline: none;
+cursor: pointer;
+font-size: 1.5rem;
+margin: 0;
+`;
 const StarRating = () => {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
@@ -22,7 +30,7 @@ const StarRating = () => {
       {[...Array(5)].map((star, index) => {
         index += 1;
         return (
-          <button
+          <StarButton
             type="button"
             key={index}
             className={index <= (hover || rating) ? "on" : "off"}
@@ -31,7 +39,7 @@ const StarRating = () => {
             onMouseLeave={() => setHover(rating)}
           >
             ★ 
-          </button>
+          </StarButton>
         );
       })}
     </div>

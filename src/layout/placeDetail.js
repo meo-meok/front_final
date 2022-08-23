@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import ReviewForm from "../Components/reviewFrom";
+import ReviewForm from "../Components/reviewForm";
 import StarTating from "../Components/StarRating";
 const Container = styled.div`
 width:24vw;
@@ -14,6 +14,8 @@ const CloseButton = styled.button`
 cursor:pointer;
 text-align:right;
 font-size:2rem;
+background-color: transparent;
+border: none;
 `;
 const PlaceInfo = styled.div`
 height:34vh;
@@ -58,7 +60,7 @@ const PlaceDetail = ({PlaceDetailInfo,setIsShowPlaceDetail,setActiveTab}) => {
                 <Info>📞 {PlaceDetailInfo['number']}</Info>
             </PlaceInfo>
             <ReviewWrite>
-                리뷰리뷰리뷰
+                <ReviewForm />
             </ReviewWrite>
         </Container>
     )

@@ -54,6 +54,11 @@ font-size:13px;
 @media screen and (max-width:1400px){
     font-size:14px;
 }
+${({isClicked}) => {
+    return isClicked ? 
+    'background-color:#000055; color:white; font-weight:bold;'
+    :null;
+}}
 `;
 const ScrollArea =styled.div`
 height:67.42vh;
@@ -64,12 +69,15 @@ text-align: justify;
   }
 `;
 
-function NavButton ({Names,setCategoryId}){
+function NavButton ({Names,setCategoryId,ClickedIndex,setClickedIndex}){
     const onClick =()=>{
         setCategoryId(Names[0])
+        setClickedIndex(Names[0])
     }
     return(
-        <NavBtn onClick={onClick}>
+        <NavBtn 
+            isClicked={Names[0]==ClickedIndex? true:false}
+            onClick={onClick}>
             {Names[1]}
         </NavBtn>
     )
@@ -81,6 +89,7 @@ const PlaceList = ({setCateId,setActiveTab,setKeyword,setSearchData}) => {
     const [categoryId,setCategoryId]=useState(1);
     const [isShowPlaceDetail,setIsShowPlaceDetail]=useState(false);
     const [PlaceDetailInfo, setPlaceDetailInfo]=useState('');
+    const[ClickedIndex,setClickedIndex]=useState(1);
     setCateId(categoryId)
     
     return (
@@ -98,7 +107,8 @@ const PlaceList = ({setCateId,setActiveTab,setKeyword,setSearchData}) => {
                     <SelectBox />
                 </ListTop>
                 <CategoryNav>
-                    {Object.entries(NAMES).map((e)=><NavButton Names={e} setCategoryId={setCategoryId}></NavButton>)}
+                    {Object.entries(NAMES).map((e)=><NavButton Names={e} setCategoryId={setCategoryId}
+                     setClickedIndex={setClickedIndex} ClickedIndex={ClickedIndex}></NavButton>)}
                 </CategoryNav>
                 <ScrollArea>
                     <DataCategory categoryId={categoryId} setIsShowPlaceDetail={setIsShowPlaceDetail} 

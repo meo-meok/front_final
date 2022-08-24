@@ -112,9 +112,12 @@ const Header = ({setActiveTab, setKeyword}) => {
         setActiveTab(3);
 
     }
+    const HomeClick = () =>{
+         window.location.reload();
+    }
     return (
         <Head>
-            <Logo><HomeImage src="imgs/meomeokz_logo_dark.png" /></Logo>
+            <Logo onClick={HomeClick}><HomeImage src="imgs/meomeokz_logo_dark.png" /></Logo>
             <Search>
                 <SearchBar type="text" name="search" onChange={handleKeywordInput} onKeyPress={handleOnkeyPress} placeholder="지역/ 가게명/ 메뉴 등으로 검색해주세요."/>
                 <ImageContainer>

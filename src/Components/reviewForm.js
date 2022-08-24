@@ -67,9 +67,27 @@ const ReviewForm = ({setActiveReview,setReviewContent}) =>{
             setTextArea(event.target.value);
         }
     }
-    const SubmitClick = () =>{
-        setReviewContent(textArea);
-        setActiveReview(false);
+    const SubmitClick = () => {
+        // setReviewContent(textArea);
+        // setActiveReview(false);
+        let param = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                        "star": 4.0,
+                        "post_date": "2021-12-17T15:52:37.101Z",
+                        "post_body": "test",
+                        "user":1,
+                        "restaurant":9
+                }),
+            }
+            fetch('http://127.0.0.1:8000/meomeok/reviews/', param)
+            .then(type=>type.json())
+            .then(result=>{
+                console.log(result);
+            });
     }
     return(
         <Container>

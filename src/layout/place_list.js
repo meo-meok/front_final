@@ -35,7 +35,7 @@ color:#000055;
 `;
 const CategoryNav = styled.div`
 height:6vh;
-padding:0 1.5rem 1rem 1.5rem;
+padding:0 1.5rem 2rem 1.5rem;
 `;
 const NavBtn = styled.button`
 border:1px solid #444444;
@@ -61,7 +61,7 @@ ${({isClicked}) => {
 }}
 `;
 const ScrollArea =styled.div`
-height:67.42vh;
+height:63vh;
 overflow: auto;
 text-align: justify;
 ::-webkit-scrollbar {

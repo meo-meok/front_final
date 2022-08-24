@@ -23,6 +23,8 @@ const Layout = () => {
     const [activeTab,setActiveTab]=useState(1);
     const [keyword, setKeyword] = useState('포항시 북구 장량로 114번길 18')
     const [categoryId, setCateId] = useState(1);
+    const [isShowPlaceDetail,setIsShowPlaceDetail]=useState(false);
+    const [PlaceDetailInfo, setPlaceDetailInfo]=useState('');
     const Tabs={1:<PlaceList setCateId={setCateId}/>}
 
     const [searchData, setSearchData] = useState([]);
@@ -35,8 +37,18 @@ const Layout = () => {
             <Body>
                 {activeTab===1 ? <CategoryMap categoryId={categoryId}/>:<MapArea keyword={keyword} activeTab={activeTab} searchData={searchData}/>}
                 {activeTab===3 ?
-                <SearchList keyword={keyword} ReturnData={setSearchData}/>:
-                <PlaceList setCateId={setCateId} setActiveTab={setActiveTab} setKeyword={setKeyword} setSearchData={setSearchData}/>}
+                <SearchList 
+                    keyword={keyword} 
+                    ReturnData={setSearchData}/>:
+                <PlaceList 
+                    setCateId={setCateId} 
+                    setActiveTab={setActiveTab} 
+                    setKeyword={setKeyword} 
+                    setSearchData={setSearchData}
+                    isShowPlaceDetail={isShowPlaceDetail}
+                    setIsShowPlaceDetail={setIsShowPlaceDetail}
+                    PlaceDetailInfo={PlaceDetailInfo}
+                    setPlaceDetailInfo={setPlaceDetailInfo}/>}
             </Body>
     
         </Container>

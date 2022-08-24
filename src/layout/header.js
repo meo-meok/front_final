@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Googlebutton from "../Components/GoogleButton";
 
 const Head = styled.div`
-width: 100vw;
+width: 100%;
 height: 9vh;
 background: #000055;
 paddings:0px 10px 0px 10px;
@@ -42,6 +42,9 @@ width:70%;
 `;
 const SearchImage = styled.img`
 width:2rem;
+@media screen and (max-width: 1600px) {
+    width:1.5rem;
+    }
 `;
 const SearchBtn = styled.button`
 background-color:transparent;
@@ -69,23 +72,20 @@ font-size:16px;
 `;
 const Tab = styled.button`
 font-size: 16px;
+height:2.5rem;
 color:white;
 border: 1px solid white;
 border-radius: 10px;
 outline: none;
 cursor: pointer;
-padding: 12px 14px;
 transition: 0.3s;
 background-color:transparent;
 margin-right:1rem;
 &:hover{  
     font-weight:bold;
   }
-&:focus{
-    font-weight:bold;
-}
 @media screen and (max-width: 1400px) {
-    font-size:16px;
+    font-size:14px;
     
     }
 `;

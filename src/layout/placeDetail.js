@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import ReviewForm from "../Components/reviewForm";
-import StarTating from "../Components/StarRating";
 const Container = styled.div`
 width:23vw;
 height:91vh;
@@ -24,11 +23,11 @@ height:28vh;
 border-bottom:1px solid black;
 display:flex;
 flex-direction:column;
-padding: 0 0.5rem;
+padding: 0 0.5rem 1.5rem 0.5rem;
+margin-bottom:1rem;
 `;
 const ReviewWrite = styled.div`
 height:56vh;
-// padding: 0 1.5rem;
 
 `;
 const Name = styled.h1`

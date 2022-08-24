@@ -18,6 +18,9 @@ cursor: pointer;
 font-size: 1.2rem;
 letter-spacing: -10px;
 line-height: 1.5;
+${({isHover})=>{
+  return isHover ? 'color: palevioletred;':'color:#ccc';
+}}
 `;
 const StarRating = () => {
   const [rating, setRating] = useState(0);
@@ -29,7 +32,7 @@ const StarRating = () => {
         return (
           <StarButton
             key={index}
-            className={index <= (hover || rating) ? "on" : "off"}
+            isHover = {index <=(hover||rating) ? true:false}
             onClick={() => setRating(index)}
             onMouseEnter={() => setHover(index)}
             onMouseLeave={() => setHover(rating)}

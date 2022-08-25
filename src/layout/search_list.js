@@ -39,10 +39,9 @@ text-align: justify;
     display:none;
   }
 `;
-const SearchList = ({setActiveTab, keyword,setActiveMap,setKeyword, setSearchData,isShowPlaceDetail,
+const SearchList = ({keyword,activeTab,setActiveMap,setSearchData,isShowPlaceDetail,
     setIsShowPlaceDetail,PlaceDetailInfo,setPlaceDetailInfo }) => {
     const [searchDataList, setSearchDataList] = useState('');
-    const [searchData2, setSearchData2] = useState('')
     var Data = [];
 
     useEffect(() => {
@@ -65,16 +64,14 @@ const SearchList = ({setActiveTab, keyword,setActiveMap,setKeyword, setSearchDat
                 
             });
     }, [keyword]);
-    // console.log("search List : ", searchDataList)
     setSearchData(searchDataList)
 
 
     return (
         <MainContainer>
             {isShowPlaceDetail && 
-                <PlaceDetail PlaceDetailInfo={PlaceDetailInfo} setIsShowPlaceDetail={setIsShowPlaceDetail} setActiveMap={setActiveMap}>
+                <PlaceDetail activeTab={activeTab} PlaceDetailInfo={PlaceDetailInfo} setIsShowPlaceDetail={setIsShowPlaceDetail} setActiveMap={setActiveMap}>
                     {setActiveMap(3)},
-                    {/* {setKeyword(PlaceDetailInfo['restaurant_name'])} */}
                     {setSearchData(PlaceDetailInfo)}
                     {console.log("SearchList : ", PlaceDetailInfo)}
                 </PlaceDetail>

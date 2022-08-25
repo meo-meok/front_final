@@ -1,4 +1,3 @@
-import { keyboard } from "@testing-library/user-event/dist/keyboard";
 import React,{useState} from "react";
 import styled from "styled-components";
 import StarRating from "./StarRating";
@@ -58,7 +57,7 @@ cursor:pointer;
     font-size:12px;
     }
 `;
-const ReviewForm = ({PlaceDetailInfo,setActiveReview,setReviewContent}) =>{
+const ReviewForm = ({PlaceDetailInfo}) =>{
     const [textArea,setTextArea] =useState("");
     const [rating, setRating] = useState(0);
     const handleChange = (event)=>{

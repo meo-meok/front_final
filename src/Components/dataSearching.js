@@ -35,41 +35,41 @@ font-size:14px;
     font-size:14px;
     }
 `;
-function ShowList({searchDataList,setIsShowPlaceDetail,setPlaceDetailInfo}) {
-  const handlePlaceDetailView = (index)=>{
-    return (
-      console.log('click success'),
-      setIsShowPlaceDetail(true),
-      setPlaceDetailInfo(searchDataList[index])
+function ShowList({ searchDataList, setIsShowPlaceDetail, setPlaceDetailInfo }) {
+    const handlePlaceDetailView = (index) => {
+        return (
+            console.log('click success'),
+            setIsShowPlaceDetail(true),
+            setPlaceDetailInfo(searchDataList[index])
+        )
+    }
+    const list = searchDataList.map((datalist, index) =>
+        <Container>
+            <SelectPlace key={datalist.id} onClick={() => { handlePlaceDetailView(index); }}>
+                {console.log("this is" + datalist)}
+                <PlaceInfo key={datalist.id}>
+                    <Name>{datalist.restaurant_name}</Name>
+                    <Info>{datalist.address}</Info>
+                    <Info>{datalist.number}</Info>
+                </PlaceInfo>
+            </SelectPlace>
+        </Container>
     )
-  }
-  const list = searchDataList.map((datalist,index) =>
-    <Container>
-      <SelectPlace key={datalist.id} onClick={()=>{handlePlaceDetailView(index);}}>
-        {console.log("this is"+datalist)}
-        <PlaceInfo key={datalist.id}>
-          <Name>{datalist.restaurant_name}</Name>
-          <Info>{datalist.address}</Info>
-          <Info>{datalist.number}</Info>
-        </PlaceInfo>
-      </SelectPlace>
-    </Container>
-  )
-  return (
-    <div>{list}</div>
-  )
+    return (
+        <div>{list}</div>
+    )
 }
-function DataSearching({ searchDataList,setIsShowPlaceDetail,setPlaceDetailInfo }) {
-  return (
-    <div>
-      {searchDataList.length === 0
-        ? <PlaceInfo>검색 결과가 없습니다.</PlaceInfo>
-        : <ShowList searchDataList={searchDataList} 
-                    setIsShowPlaceDetail={setIsShowPlaceDetail} 
+function DataSearching({ searchDataList, setIsShowPlaceDetail, setPlaceDetailInfo }) {
+    return (
+        <div>
+            {searchDataList.length === 0
+                ? <PlaceInfo>검색 결과가 없습니다.</PlaceInfo>
+                : <ShowList searchDataList={searchDataList}
+                    setIsShowPlaceDetail={setIsShowPlaceDetail}
                     setPlaceDetailInfo={setPlaceDetailInfo} />
-      }
-    </div>
-  )
+            }
+        </div>
+    )
 }
 
 

@@ -36,59 +36,60 @@ font-size:14px;
     font-size:14px;
     }
 `;
-const ShowList=({searchDataList,setIsShowPlaceDetail,setPlaceDetailInfo})=>{
-  const handlePlaceDetailView = (index)=>{
-    return (
-      setIsShowPlaceDetail(true),
-      setPlaceDetailInfo(searchDataList[index])
+const ShowList = ({ searchDataList, setIsShowPlaceDetail, setPlaceDetailInfo }) => {
+    const handlePlaceDetailView = (index) => {
+        return (
+            setIsShowPlaceDetail(true),
+            setPlaceDetailInfo(searchDataList[index])
+        )
+    }
+    const list = searchDataList.map((datalist, index) =>
+        <Container>
+            <SelectPlace key={datalist.id} onClick={() => { handlePlaceDetailView(index); }}>
+                <PlaceInfo>
+                    <Name>{datalist.restaurant_name}</Name>
+                    <Info>{datalist.address}</Info>
+                    <Info>{datalist.number}</Info>
+                </PlaceInfo>
+            </SelectPlace>
+        </Container>
+
     )
-  }
-  const list = searchDataList.map((datalist,index)=>
-    <Container>
-      <SelectPlace key={datalist.id} onClick={()=>{handlePlaceDetailView(index);}}>
-        <PlaceInfo>
-          <Name>{datalist.restaurant_name}</Name>
-          <Info>{datalist.address}</Info>
-          <Info>{datalist.number}</Info>
-        </PlaceInfo>
-      </SelectPlace>
-    </Container>
-    
-  )
-  return(
-    <div>{list}</div>
-  )
-}
-function DataCategory({categoryId,setIsShowPlaceDetail,setPlaceDetailInfo}) {
-    const [searchDataList,setSearchDataList]=useState('');
-    var searchData = [];
-  
-    useEffect(() => {
-      fetch('https://jeonjin.pythonanywhere.com/restaurants/')
-      .then(results=>results.json())
-      .then(results=>{
-        results.map((result)=>{
-            if(result.category==categoryId){
-                searchData.push(result)
-            }
-        })
-        // 데이터리스트 중복 제거
-        {
-            searchData=searchData.filter((arr,index,callback)=>
-            index=== callback.findIndex((d)=>d.restaurant_id === arr.restaurant_id))
-            
-        }
-        setSearchDataList(searchData)
-      });
-  }, [categoryId]);
-  
     return (
-      <div>
-        {searchDataList &&
-          <ShowList searchDataList={searchDataList} 
-                    setIsShowPlaceDetail={setIsShowPlaceDetail} 
-                    setPlaceDetailInfo={setPlaceDetailInfo}/>}
-      </div>
+        <div>{list}</div>
+    )
+}
+function DataCategory({ categoryId, setIsShowPlaceDetail, setPlaceDetailInfo }) {
+    const [searchDataList, setSearchDataList] = useState('');
+    var searchData = [];
+
+    useEffect(() => {
+        fetch('https://jeonjin.pythonanywhere.com/restaurants/')
+        // fetch('http://127.0.0.1:8000/api/restaurant/')
+            .then(results => results.json())
+            .then(results => {
+                results.map((result) => {
+                    if (result.category == categoryId) {
+                        searchData.push(result)
+                    }
+                })
+                // 데이터리스트 중복 제거
+                {
+                    searchData = searchData.filter((arr, index, callback) =>
+                        index === callback.findIndex((d) => d.restaurant_id === arr.restaurant_id))
+
+                }
+                setSearchDataList(searchData)
+            });
+    }, [categoryId]);
+
+    return (
+        <div>
+            {searchDataList &&
+                <ShowList searchDataList={searchDataList}
+                    setIsShowPlaceDetail={setIsShowPlaceDetail}
+                    setPlaceDetailInfo={setPlaceDetailInfo} />}
+        </div>
     )
 }
 

@@ -33,7 +33,7 @@ height:56vh;
 const Name = styled.h1`
 margin-bottom:1.3rem;
 color:#000055;
-font-size:24px;
+font-size:22px;
 @media screen and (max-width: 1400px) {
     font-size:20px;
     }

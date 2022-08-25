@@ -3,6 +3,8 @@ import styled from "styled-components";
 import DataSearching from "../Components/dataSearching";
 import PlaceDetail from "./placeDetail";
 const MainContainer = styled.div`
+display:flex;
+flex-direction:row;
 `;
 const Container = styled.div`
 width:30vw;

@@ -17,16 +17,12 @@ function MapArea({ keyword, activeTab, setActiveTab, searchData, activeMap }) {
             if (activeMap === 2) {
                 // console.log('activeTab',activeMap)
                 searchData = [searchData]
-                name_list.push(keyword)
+                // name_list.push(keyword)
             }
         }
         else {
-            for (var i = 0; i < searchData.length; i++) {
-                name_list.push(searchData[i].restaurant_name);
-            }
             if (activeMap === 3) {
-                // console.log('activeTab',activeMap)
-                name_list.push(keyword)
+              searchData = [searchData]
             }
         }
 

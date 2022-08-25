@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Header from "./header";
 import MapArea from "./MapArea";
 import PlaceList from "./place_list";
-import Review from "./review";
 import SearchList from "./search_list";
 import CategoryMap from "./CategoryMap";
 
@@ -26,14 +25,10 @@ const Layout = () => {
     const [categoryId, setCateId] = useState(1);
     const [isShowPlaceDetail,setIsShowPlaceDetail]=useState(false);
     const [PlaceDetailInfo, setPlaceDetailInfo]=useState('');
-    // const Tabs={1:<PlaceList setCateId={setCateId}/>}
-
     const [searchData, setSearchData] = useState([]);
-    // console.log("Layout1 : ", searchData)
     
     return (
         <Container>
-            {/* {console.log(activeTab)} */}
             <Header setActiveTab={setActiveTab} setActiveMap={setActiveMap} setKeyword={setKeyword} setIsShowPlaceDetail={setIsShowPlaceDetail}/>
             <Body>
                 {activeMap===1 ? 

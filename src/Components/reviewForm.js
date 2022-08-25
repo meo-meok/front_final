@@ -83,11 +83,11 @@ const ReviewForm = ({PlaceDetailInfo,setActiveReview,setReviewContent}) =>{
                         "star": rating,
                         "post_date": nowtime, // 현재 시간 입력, 그러나 UTC임 
                         "post_body": `${textArea}`,
-                        "user": 2,
+                        "user": 1,
                         "restaurant": PlaceDetailInfo['restaurant_id'],
                 }),
             }
-            fetch('http://127.0.0.1:8000/meomeok/reviews/', param)
+            fetch('https://jeonjin.pythonanywhere.com/meomeok/reviews/', param)
             .then(type=>type.json())
             .then(result=>{
                 console.log(result);

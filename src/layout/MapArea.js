@@ -18,6 +18,7 @@ function MapArea({ keyword,activeTab, setActiveTab, searchData, activeMap }) {
     if(activeTab===1){
       if(activeMap===2){
         // console.log('activeTab',activeMap)
+        searchData = [searchData]
         name_list.push(keyword)
       }}
     else{
@@ -33,44 +34,62 @@ function MapArea({ keyword,activeTab, setActiveTab, searchData, activeMap }) {
     // console.log("keyword",keyword)
     console.log("name_list", name_list)
 
-    ps.keywordSearch(keyword, (data, status, _pagination) => {
-      if (status === kakao.maps.services.Status.OK) {
-        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-        // LatLngBounds 객체에 좌표를 추가합니다
-        //ㅎ
-        let markers = []
-        // console.log("data : ", data)
+    let markers = []
+    console.log("MapArea2 : ", searchData.latitude)
+        for (var i = 0; i < searchData.length; i++) {
+            markers.push({
+                position: {
+                    lat: searchData[i].latitude,
+                    lng: searchData[i].longitude,
+                  },
+                content : searchData[i].restaurant_name,
+            })
+            bounding.extend(
+                new kakao.maps.LatLng(searchData[i].latitude, searchData[i].longitude)
+            )
+        }
+        map.setBounds(bounding)
+        setMarkers(markers)
+      },[map, searchData])
+      
+  //   ps.keywordSearch(keyword, (data, status, _pagination) => {
+  //     if (status === kakao.maps.services.Status.OK) {
+  //       // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+  //       // LatLngBounds 객체에 좌표를 추가합니다
+  //       //ㅎ
+  //       let markers = []
+  //       // console.log("data : ", data)
         
 
-        for (var i = 0; i < data.length; i++) {
-          for (var j = 0; j < name_list.length; j++) {
-            if (name_list[j] == data[i].place_name) {
-              markers.push({
-                position: {
-                  lat: data[i].y,
-                  lng: data[i].x,
-                },
-                content: data[i].place_name,
-              })
-              // @ts-ignore
-              bounding.extend(new kakao.maps.LatLng(data[i].y, data[i].x))
-            }
-          }
-          // @ts-ignore
-        }
-        setMarkers(markers)
+  //       for (var i = 0; i < data.length; i++) {
+  //         for (var j = 0; j < name_list.length; j++) {
+  //           if (name_list[j] == data[i].place_name) {
+  //             markers.push({
+  //               position: {
+  //                 lat: data[i].y,
+  //                 lng: data[i].x,
+  //               },
+  //               content: data[i].place_name,
+  //             })
+  //             // @ts-ignore
+  //             bounding.extend(new kakao.maps.LatLng(data[i].y, data[i].x))
+  //           }
+  //         }
+  //         // @ts-ignore
+  //       }
+  //       setMarkers(markers)
 
-        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-        map.setBounds(bounding)
-      }
-    }, {
-      bounds:
-        new kakao.maps.LatLngBounds(
-          new kakao.maps.LatLng(36.06365, 129.36525),
-          new kakao.maps.LatLng(36.09245, 129.41006))
-    }
-    )
-  }, [map, searchData])
+  //       // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+  //       map.setBounds(bounding)
+  //     }
+  //   }, {
+  //     bounds:
+  //       new kakao.maps.LatLngBounds(
+  //         new kakao.maps.LatLng(36.06365, 129.36525),
+  //         new kakao.maps.LatLng(36.09245, 129.41006))
+  //   }
+  //   )
+  // }, [map, searchData])
 
   return (
     <Map // 로드뷰를 표시할 Container

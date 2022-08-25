@@ -22,8 +22,8 @@ ${({isHover})=>{
   return isHover ? 'color: palevioletred;':'color:#ccc';
 }}
 `;
-const StarRating = () => {
-  const [rating, setRating] = useState(0);
+const StarRating = ({rating,setRating}) => {
+  
   const [hover, setHover] = useState(0);
   return (
     <StarContainer>

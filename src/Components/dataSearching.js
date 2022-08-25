@@ -35,10 +35,18 @@ font-size:14px;
     font-size:14px;
     }
 `;
-function ShowList(props) {
-  const list = props.searchDataList.map((datalist) =>
+function ShowList({searchDataList,setIsShowPlaceDetail,setPlaceDetailInfo}) {
+  const handlePlaceDetailView = (index)=>{
+    return (
+      console.log('click success'),
+      setIsShowPlaceDetail(true),
+      setPlaceDetailInfo(searchDataList[index])
+    )
+  }
+  const list = searchDataList.map((datalist,index) =>
     <Container>
-      <SelectPlace>
+      <SelectPlace key={datalist.id} onClick={()=>{handlePlaceDetailView(index);}}>
+        {console.log("this is"+datalist)}
         <PlaceInfo key={datalist.id}>
           <Name>{datalist.restaurant_name}</Name>
           <Info>{datalist.address}</Info>
@@ -51,12 +59,14 @@ function ShowList(props) {
     <div>{list}</div>
   )
 }
-function DataSearching({ searchDataList }) {
+function DataSearching({ searchDataList,setIsShowPlaceDetail,setPlaceDetailInfo }) {
   return (
     <div>
       {searchDataList.length === 0
         ? <PlaceInfo>검색 결과가 없습니다.</PlaceInfo>
-        : <ShowList searchDataList={searchDataList} />
+        : <ShowList searchDataList={searchDataList} 
+                    setIsShowPlaceDetail={setIsShowPlaceDetail} 
+                    setPlaceDetailInfo={setPlaceDetailInfo} />
       }
     </div>
   )

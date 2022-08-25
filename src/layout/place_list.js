@@ -84,8 +84,8 @@ function NavButton ({Names,setCategoryId,ClickedIndex,setClickedIndex}){
 }
 
 
-const PlaceList = ({setCateId,setActiveTab,setKeyword,setSearchData,
-    PlaceDetailInfo,isShowPlaceDetail,setIsShowPlaceDetail,setPlaceDetailInfo}) => {
+const PlaceList = ({setCateId,activeMap,setActiveMap,setKeyword,setSearchData,
+    isShowPlaceDetail,setIsShowPlaceDetail,PlaceDetailInfo,setPlaceDetailInfo}) => {
     const NAMES = {1:"한식/분식", 2:"돈까스/회/일식", 3:"중식", 4:"양식", 5:"아시안", 6:"고기/구이", 7:"닭/치킨", 8:"찜/탕/찌개", 9:"패스트푸드", 10:"카페/디저트", 11:"호프/주류"}
     const [categoryId,setCategoryId]=useState(1);
     const[ClickedIndex,setClickedIndex]=useState(1);
@@ -94,8 +94,8 @@ const PlaceList = ({setCateId,setActiveTab,setKeyword,setSearchData,
     return (
         <MainContainer>
             {isShowPlaceDetail && 
-                <PlaceDetail PlaceDetailInfo={PlaceDetailInfo} setIsShowPlaceDetail={setIsShowPlaceDetail} setActiveTab={setActiveTab}>
-                    {setActiveTab(2)},
+                <PlaceDetail PlaceDetailInfo={PlaceDetailInfo} setIsShowPlaceDetail={setIsShowPlaceDetail} setActiveMap={setActiveMap}>
+                    {setActiveMap(2)},
                     {setKeyword(PlaceDetailInfo['restaurant_name'])},
                     {setSearchData(PlaceDetailInfo)}
                 </PlaceDetail>

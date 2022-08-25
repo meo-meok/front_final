@@ -46,13 +46,13 @@ margin-bottom:0;
     }
 `;
 
-const PlaceDetail = ({PlaceDetailInfo,setIsShowPlaceDetail,setActiveTab}) => {
+const PlaceDetail = ({PlaceDetailInfo,setIsShowPlaceDetail,setActiveMap}) => {
     const [activeReview,setActiveReview]=useState(true);
     const [reviewcontent,setReviewContent]= useState("");
     const handlePlaceDetailView = ()=>{
         return (
             setIsShowPlaceDetail(false),
-            setActiveTab(1)
+            setActiveMap(1)
         )
       }
     return (

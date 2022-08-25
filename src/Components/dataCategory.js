@@ -84,7 +84,10 @@ function DataCategory({categoryId,setIsShowPlaceDetail,setPlaceDetailInfo}) {
   
     return (
       <div>
-        {searchDataList &&<ShowList searchDataList={searchDataList} setIsShowPlaceDetail={setIsShowPlaceDetail} setPlaceDetailInfo={setPlaceDetailInfo}/>}
+        {searchDataList &&
+          <ShowList searchDataList={searchDataList} 
+                    setIsShowPlaceDetail={setIsShowPlaceDetail} 
+                    setPlaceDetailInfo={setPlaceDetailInfo}/>}
       </div>
     )
 }

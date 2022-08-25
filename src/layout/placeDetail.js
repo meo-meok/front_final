@@ -65,7 +65,7 @@ const PlaceDetail = ({PlaceDetailInfo,setIsShowPlaceDetail,setActiveTab}) => {
                 <Info>📞 {PlaceDetailInfo['number']}</Info>
             </PlaceInfo>
             <ReviewWrite>
-                <ReviewForm />
+                <ReviewForm PlaceDetailInfo ={PlaceDetailInfo} />
             </ReviewWrite>
         </Container>
     )

@@ -1,3 +1,4 @@
+import { keyboard } from "@testing-library/user-event/dist/keyboard";
 import React,{useState} from "react";
 import styled from "styled-components";
 import StarRating from "./StarRating";
@@ -57,8 +58,9 @@ cursor:pointer;
     font-size:12px;
     }
 `;
-const ReviewForm = ({setActiveReview,setReviewContent}) =>{
+const ReviewForm = ({PlaceDetailInfo,setActiveReview,setReviewContent}) =>{
     const [textArea,setTextArea] =useState("");
+    const [rating, setRating] = useState(0);
     const handleChange = (event)=>{
         if(textArea.length<100){
             setTextArea(event.target.value);
@@ -70,17 +72,19 @@ const ReviewForm = ({setActiveReview,setReviewContent}) =>{
     const SubmitClick = () => {
         // setReviewContent(textArea);
         // setActiveReview(false);
+        const nowtime = new Date();
+        // const krtime = new Date(nowtime + (9 * 60 * 60 * 1000));
         let param = {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                        "star": 4.0,
-                        "post_date": "2021-12-17T15:52:37.101Z",
-                        "post_body": "test",
-                        "user":1,
-                        "restaurant":9
+                        "star": rating,
+                        "post_date": nowtime, // 현재 시간 입력, 그러나 UTC임 
+                        "post_body": `${textArea}`,
+                        "user": 2,
+                        "restaurant": PlaceDetailInfo['restaurant_id'],
                 }),
             }
             fetch('http://127.0.0.1:8000/meomeok/reviews/', param)
@@ -94,7 +98,7 @@ const ReviewForm = ({setActiveReview,setReviewContent}) =>{
             <ReviewInfo>
                 <UserStarContainer>
                     <UserInfo><p>👩 User12354865</p></UserInfo>
-                    <StarRating />
+                    <StarRating rating={rating} setRating={setRating}/>
                 </UserStarContainer>
                 <TextLimit>{textArea.length}/100</TextLimit>
             </ReviewInfo>

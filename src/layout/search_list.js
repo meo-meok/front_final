@@ -42,6 +42,7 @@ text-align: justify;
 const SearchList = ({setActiveTab, keyword,setActiveMap,setKeyword, setSearchData,isShowPlaceDetail,
     setIsShowPlaceDetail,PlaceDetailInfo,setPlaceDetailInfo }) => {
     const [searchDataList, setSearchDataList] = useState('');
+    const [searchData2, setSearchData2] = useState('')
     var Data = [];
 
     useEffect(() => {
@@ -64,7 +65,7 @@ const SearchList = ({setActiveTab, keyword,setActiveMap,setKeyword, setSearchDat
                 
             });
     }, [keyword]);
-    console.log("search List : ", searchDataList)
+    // console.log("search List : ", searchDataList)
     setSearchData(searchDataList)
 
 
@@ -73,8 +74,9 @@ const SearchList = ({setActiveTab, keyword,setActiveMap,setKeyword, setSearchDat
             {isShowPlaceDetail && 
                 <PlaceDetail PlaceDetailInfo={PlaceDetailInfo} setIsShowPlaceDetail={setIsShowPlaceDetail} setActiveMap={setActiveMap}>
                     {setActiveMap(3)},
-                    {setKeyword(PlaceDetailInfo['restaurant_name'])},
+                    {/* {setKeyword(PlaceDetailInfo['restaurant_name'])} */}
                     {setSearchData(PlaceDetailInfo)}
+                    {console.log("SearchList : ", PlaceDetailInfo)}
                 </PlaceDetail>
             }
             <Container>

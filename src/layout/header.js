@@ -90,17 +90,20 @@ margin-right:1rem;
     }
 `;
 
-const Header = ({setActiveTab, setKeyword}) => {
+const Header = ({setActiveTab,setActiveMap, setKeyword,setIsShowPlaceDetail}) => {
     const [keywordInput, setKeywordInput] = useState('')
     const onClick = (event) => {
         if (event.target.name === "list"){
             setActiveTab(1);
+            setActiveMap(1);
         }
     }
     const handleOnkeyPress = (event) => {
         if (event.key === 'Enter'){
             setKeyword(keywordInput);
-            setActiveTab(3);
+            setActiveTab(2);
+            setActiveMap(2);
+            setIsShowPlaceDetail(false);
         }
     }
     const handleKeywordInput = (event) => {
@@ -109,7 +112,9 @@ const Header = ({setActiveTab, setKeyword}) => {
     const handleKeywordSubmit = (event) => {  
         event.preventDefault(); 
         setKeyword(keywordInput)
-        setActiveTab(3);
+        setActiveTab(2);
+        setActiveMap(2);
+        setIsShowPlaceDetail(false);
 
     }
     const HomeClick = () =>{

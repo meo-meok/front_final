@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 
-function MapArea({ keyword,activeTab, setActiveTab, searchData }) {
+function MapArea({ keyword,activeTab, setActiveTab, searchData, activeMap }) {
   const [info, setInfo] = useState()
   const [markers, setMarkers] = useState([])
   const [map, setMap] = useState()
@@ -12,19 +12,25 @@ function MapArea({ keyword,activeTab, setActiveTab, searchData }) {
     const ps = new kakao.maps.services.Places()
     const bounding = new kakao.maps.LatLngBounds()
 
-    console.log("Map Area : ", searchData)
+    // console.log("Map Area : ", searchData)
   // console.log('activeTab',activeTab)
     const name_list = []
-    if(activeTab===2){
-      console.log('activeTab',activeTab)
-      name_list.push(keyword)
-    }else{
+    if(activeTab===1){
+      if(activeMap===2){
+        // console.log('activeTab',activeMap)
+        name_list.push(keyword)
+      }}
+    else{
       for (var i = 0; i < searchData.length; i++) {
         name_list.push(searchData[i].restaurant_name);
       }
+      if(activeMap===3){
+        // console.log('activeTab',activeMap)
+        name_list.push(keyword)
+      }
     }
     
-    console.log("keyword",keyword)
+    // console.log("keyword",keyword)
     console.log("name_list", name_list)
 
     ps.keywordSearch(keyword, (data, status, _pagination) => {
@@ -33,7 +39,7 @@ function MapArea({ keyword,activeTab, setActiveTab, searchData }) {
         // LatLngBounds 객체에 좌표를 추가합니다
         //ㅎ
         let markers = []
-        console.log("data : ", data)
+        // console.log("data : ", data)
         
 
         for (var i = 0; i < data.length; i++) {
@@ -85,7 +91,6 @@ function MapArea({ keyword,activeTab, setActiveTab, searchData }) {
           position={marker.position}
           onClick={() => {
             setInfo(marker)
-            setActiveTab(2)
           }}
         >
           {info && info.content === marker.content && (

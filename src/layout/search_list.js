@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import DataSearching from "../Components/dataSearching";
+import PlaceDetail from "./placeDetail";
 const MainContainer = styled.div`
 `;
 const Container = styled.div`
@@ -36,9 +37,10 @@ text-align: justify;
     display:none;
   }
 `;
-const SearchList = ({ keyword, ReturnData }) => {
+const SearchList = ({setActiveTab, keyword,setActiveMap,setKeyword, setSearchData,isShowPlaceDetail,
+    setIsShowPlaceDetail,PlaceDetailInfo,setPlaceDetailInfo }) => {
     const [searchDataList, setSearchDataList] = useState('');
-    var searchData = [];
+    var Data = [];
 
     useEffect(() => {
         fetch('https://jeonjin.pythonanywhere.com/restaurants/')
@@ -48,30 +50,40 @@ const SearchList = ({ keyword, ReturnData }) => {
                     // 검색내용과 일치하는 배열 찾기
                     let str = result.restaurant_name.replaceAll(/ /gi, "");
                     if (str.indexOf(keyword.replaceAll(/ /gi, "")) !== -1) {
-                        searchData.push(result);
+                        Data.push(result);
                     }
                 })
                 // 데이터리스트 중복 제거
 
-                searchData = searchData.filter((arr, index, callback) =>
+                Data = Data.filter((arr, index, callback) =>
                     index === callback.findIndex((d) => d.restaurant_id === arr.restaurant_id))
 
-                setSearchDataList(searchData)
+                setSearchDataList(Data)
                 
             });
     }, [keyword]);
     console.log("search List : ", searchDataList)
-    ReturnData(searchDataList)
+    setSearchData(searchDataList)
 
 
     return (
         <MainContainer>
+            {isShowPlaceDetail && 
+                <PlaceDetail PlaceDetailInfo={PlaceDetailInfo} setIsShowPlaceDetail={setIsShowPlaceDetail} setActiveMap={setActiveMap}>
+                    {setActiveMap(3)},
+                    {setKeyword(PlaceDetailInfo['restaurant_name'])},
+                    {setSearchData(PlaceDetailInfo)}
+                </PlaceDetail>
+            }
             <Container>
                 <ListTop>
                     <ListName>검색 결과</ListName>
                 </ListTop>
                 <ScrollArea>
-                    <DataSearching searchDataList={searchDataList} />
+                    <DataSearching 
+                        searchDataList={searchDataList}
+                        setIsShowPlaceDetail={setIsShowPlaceDetail} 
+                        setPlaceDetailInfo={setPlaceDetailInfo} />
                 </ScrollArea>
             </Container>
         </MainContainer>
